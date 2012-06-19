@@ -1,4 +1,4 @@
-DROP TABLE clientes CASCADE CONSTRAINTS;
+
 CREATE TABLE clientes(
 codigo_cliente INTEGER PRIMARY KEY NOT NULL,
 dni CHAR(9) NOT NULL UNIQUE,
@@ -8,7 +8,7 @@ c_autonoma VARCHAR2(20) NOT NULL,
 tipo CHAR(1) CHECK (tipo in ('A', 'B', 'C'))
 );
 
-DROP TABLE sucursales CASCADE CONSTRAINTS;
+
 CREATE TABLE sucursales(
  codigo_sucursal INT NOT NULL PRIMARY KEY,
  nombre VARCHAR2(30) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE sucursales(
  c_autonoma VARCHAR2(20) NOT NULL,
  director INT UNIQUE
 );
-DROP TABLE empleados CASCADE CONSTRAINTS;
+
 CREATE TABLE empleados (
   codigo_empleado INT NOT NULL PRIMARY KEY,
   dni CHAR(9) NOT NULL UNIQUE,
@@ -33,7 +33,7 @@ ALTER TABLE sucursales ADD (
 FOREIGN KEY (director) REFERENCES empleados(codigo_empleado)
   );
 
-DROP TABLE productores CASCADE CONSTRAINTS;
+
 CREATE TABLE productores(
  codigo_productor INTEGER NOT NULL PRIMARY KEY,
 -- dni CHAR(9) NOT NULL UNIQUE,
@@ -43,7 +43,7 @@ CREATE TABLE productores(
 -- pais VARCHAR2(20)
 );
 
-DROP TABLE vinos CASCADE CONSTRAINTS;
+
 CREATE TABLE vinos(
 codigo_vino INT NOT NULL PRIMARY KEY,
 marca VARCHAR2(30) NOT NULL,
@@ -59,7 +59,6 @@ pais VARCHAR2(20),
 FOREIGN KEY (cod_productor) REFERENCES productores(codigo_productor)
 );
 
-DROP TABLE vende CASCADE CONSTRAINTS;
 CREATE TABLE vende (
  cod_sucursal INT,
  cod_vino INT,
@@ -68,7 +67,7 @@ CREATE TABLE vende (
  FOREIGN KEY (cod_vino) REFERENCES vinos(codigo_vino)
 );
 
-DROP TABLE suministra CASCADE CONSTRAINTS;
+
 CREATE TABLE suministra(
  cod_cliente INT,
  cod_sucursal INT,
